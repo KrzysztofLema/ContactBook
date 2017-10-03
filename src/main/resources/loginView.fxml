@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.Krzysiek.testProject.controllers.LoginController">
+   <children>
+   <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="350.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+       <tabs>
+           <Tab text="Logowanie">
+               <content>
+                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                       <children>
+                           <JFXButton fx:id="buttonLogin" layoutX="138.0" layoutY="163.0" prefHeight="25.0" prefWidth="84.0" ripplerFill="BLACK" text="Zaloguj" />
+                           <JFXPasswordField fx:id="passwordFieldLoginPass" focusColor="#1993da" layoutX="94.0" layoutY="96.0" prefHeight="25.0" prefWidth="172.0" promptText="Hasło" />
+                           <JFXTextField fx:id="textFieldLogin" focusColor="#1993da" layoutX="94.0" layoutY="54.0" prefHeight="25.0" prefWidth="172.0" promptText="Login" />
+                       </children>
+                   </AnchorPane>
+               </content>
+           </Tab>
+           <Tab text="Rejestracja">
+               <content>
+                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                       <children>
+                           <JFXTextField fx:id="textFieldLoginRegistration" focusColor="#1993da" layoutX="35.0" layoutY="41.0" prefHeight="25.0" prefWidth="170.0" promptText="Login" />
+                           <JFXButton fx:id="buttonRegistration" layoutX="224.0" layoutY="145.0" prefHeight="40.0" prefWidth="105.0" text="Zarejestruj" />
+                           <JFXPasswordField fx:id="passwordFieldRegistrationPass" focusColor="#1993da" layoutX="35.0" layoutY="96.0" prefHeight="25.0" prefWidth="171.0" promptText="Hasło" />
+                           <JFXPasswordField fx:id="passwordFieldRegistrationPassRepeat" focusColor="#1993da" layoutX="35.0" layoutY="145.0" prefHeight="25.0" prefWidth="174.0" promptText="Powtórz hasło" />
+                       </children>
+                   </AnchorPane>
+               </content>
+           </Tab>
+       </tabs>
+   </TabPane>
+   </children>
+</AnchorPane>
