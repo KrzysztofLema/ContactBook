@@ -4,12 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import pl.Krzysiek.testProject.models.UserSession;
 import pl.Krzysiek.testProject.models.Utils;
 import pl.Krzysiek.testProject.models.dao.UserDao;
 import pl.Krzysiek.testProject.models.dao.impl.UserDaoImpl;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -58,6 +63,15 @@ public class LoginController implements Initializable {
         if (userDao.login(login, password)) {
             userSession.setUserName(login);
             userSession.setLogin(true);
+            try {
+                Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
+                Stage stageRoot = (Stage) buttonLogin.getScene().getWindow();
+                stageRoot.setScene(new Scene(root,400,400));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
             Utils.createSimpleDialog("Logowanie", "", "Logowanie poprawne");
         } else {
             Utils.createSimpleDialog("Logowanie", "", "Logowanie niepoprawne");
