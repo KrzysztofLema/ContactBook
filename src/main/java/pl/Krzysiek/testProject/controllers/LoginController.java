@@ -54,7 +54,6 @@ public class LoginController implements Initializable {
 
     private void tryLogin() {
 
-
         String login = textFieldLogin.getText();
         String password = passwordFieldLoginPass.getText();
         if (!checkLoginData()) {
@@ -66,13 +65,12 @@ public class LoginController implements Initializable {
             try {
                 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
                 Stage stageRoot = (Stage) buttonLogin.getScene().getWindow();
-                stageRoot.setScene(new Scene(root,400,400));
+                stageRoot.setScene(new Scene(root, 400, 400));
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
-
-            Utils.createSimpleDialog("Logowanie", "", "Logowanie poprawne");
         } else {
             Utils.createSimpleDialog("Logowanie", "", "Logowanie niepoprawne");
         }

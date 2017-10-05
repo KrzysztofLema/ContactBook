@@ -2,7 +2,7 @@ package pl.Krzysiek.testProject.models;
 
 import javafx.scene.control.Alert;
 
-import java.io.UnsupportedEncodingException;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

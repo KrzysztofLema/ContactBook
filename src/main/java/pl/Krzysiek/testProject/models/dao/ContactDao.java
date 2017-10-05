@@ -3,7 +3,7 @@ package pl.Krzysiek.testProject.models.dao;
 import java.util.List;
 
 public interface ContactDao {
-    List<String> getAllUserNames(String name);
+    List<String> getAllContactNames(String name);
 
     String getNumber(String contact);
 
