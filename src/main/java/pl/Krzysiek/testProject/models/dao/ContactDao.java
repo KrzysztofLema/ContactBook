@@ -11,5 +11,6 @@ public interface ContactDao {
 
     void removeContact(String name);
 
-    boolean editContact(String name, String number);
+    boolean editContactName(String newName, String number, String oldName);
+
 }

@@ -1,9 +1,11 @@
 package pl.Krzysiek.testProject.models.dao.impl;
 
+import com.sun.org.apache.regexp.internal.RE;
 import pl.Krzysiek.testProject.models.MySqlConnector;
 import pl.Krzysiek.testProject.models.UserSession;
 import pl.Krzysiek.testProject.models.dao.ContactDao;
 
+import java.awt.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,10 +44,9 @@ public class ContactDaoImpl implements ContactDao {
                     "SELECT number FROM contact WHERE name=?");
             statement.setString(1, contact);
             ResultSet resultSet = statement.executeQuery();
-
-            resultSet.next();
-
-            return resultSet.getString("number");
+            while (resultSet.next()) {
+                return resultSet.getString("number");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -72,16 +73,26 @@ public class ContactDaoImpl implements ContactDao {
 
     @Override
     public void removeContact(String name) {
+        try {
+            PreparedStatement statement = connector.getConnection().prepareStatement(
+                    "DELETE FROM contact WHERE name=?");
+            statement.setString(1, name);
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
-    public boolean editContact(String name, String number) {
+    public boolean editContactName(String newName, String number, String oldName) {
         try {
             PreparedStatement statement = connector.getConnection().prepareStatement(
-                    "UPDATE contact SET number=? WHERE name=?");
-            statement.setString(1, name);
-            statement.setString(2, number);
+                    "UPDATE contact SET number=?, name=? WHERE name=?");
+            statement.setString(1, number);
+            statement.setString(2, newName);
+            statement.setString(3, oldName);
             statement.execute();
             statement.close();
             return true;
@@ -92,4 +103,5 @@ public class ContactDaoImpl implements ContactDao {
 
         return false;
     }
+
 }

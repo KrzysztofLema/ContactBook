@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MySqlConnector {
     private static final String SQL_LINK = "jdbc:mysql://...:3306/maniu_krzlema";
     private static final String SQL_USER = "...";
-    private static final String SQL_PASSWORD = "....";
+    private static final String SQL_PASSWORD = "...";
     private static final String SQL_CLASS = "com.mysql.jdbc.Driver";
 
 

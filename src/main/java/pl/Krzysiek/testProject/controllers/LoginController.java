@@ -65,7 +65,7 @@ public class LoginController implements Initializable {
             try {
                 Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
                 Stage stageRoot = (Stage) buttonLogin.getScene().getWindow();
-                stageRoot.setScene(new Scene(root, 400, 400));
+                stageRoot.setScene(new Scene(root, 350, 270));
 
             } catch (IOException e) {
                 e.printStackTrace();
