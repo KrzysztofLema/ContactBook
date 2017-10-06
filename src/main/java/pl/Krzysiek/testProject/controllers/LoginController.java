@@ -3,11 +3,13 @@ package pl.Krzysiek.testProject.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import pl.Krzysiek.testProject.models.UserSession;
 import pl.Krzysiek.testProject.models.Utils;
@@ -35,6 +37,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         buttonLogin.setOnMouseClicked(s -> tryLogin());
+        buttonLogin.setOnKeyPressed(event -> tryLogin());
         buttonRegistration.setOnMouseClicked(s -> tryRegistration());
     }
 
