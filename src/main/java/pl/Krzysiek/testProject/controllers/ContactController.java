@@ -11,15 +11,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import pl.Krzysiek.testProject.models.UserSession;
+import pl.Krzysiek.testProject.models.Utils;
 import pl.Krzysiek.testProject.models.dao.ContactDao;
 import pl.Krzysiek.testProject.models.dao.impl.ContactDaoImpl;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ContactController implements Initializable {
@@ -46,6 +50,9 @@ public class ContactController implements Initializable {
         labelNumber.setEditable(false);
 
         loadContacts();
+        updateActions();
+        removeContact();
+
         listViewNumberList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             labelName.setText(newValue);
             labelNumber.setText(contactDao.getNumber(newValue));
@@ -55,17 +62,16 @@ public class ContactController implements Initializable {
 
         buttonAddContact.setOnMouseClicked(event -> {
             addContact();
-            removeContact();
         });
-
-        updateActions();
-        removeContact();
-
     }
 
     private void removeContact() {
         buttonRemoveContact.setOnMouseClicked(event -> {
-            contactDao.removeContact(listViewNumberList.getSelectionModel().getSelectedItem());
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                contactDao.removeContact(listViewNumberList.getSelectionModel().getSelectedItem());
+            }
             loadContacts();
         });
     }
@@ -113,12 +119,9 @@ public class ContactController implements Initializable {
                 labelNumber.setEditable(true);
             }
         });
-        labelNumber.focusedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                contactDao.editContactName(listViewNumberList.getSelectionModel().getSelectedItem(), labelNumber.getText(), listViewNumberList.getSelectionModel().getSelectedItem());
-                loadContacts();
-            }
+        labelNumber.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            contactDao.editContactName(listViewNumberList.getSelectionModel().getSelectedItem(), labelNumber.getText(), listViewNumberList.getSelectionModel().getSelectedItem());
+            loadContacts();
         });
     }
 }

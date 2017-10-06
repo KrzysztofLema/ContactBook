@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MySqlConnector {
-    private static final String SQL_LINK = "jdbc:mysql://...:3306/maniu_krzlema";
-    private static final String SQL_USER = "...";
-    private static final String SQL_PASSWORD = "...";
+    private static final String SQL_LINK = "jdbc:mysql://sql.maniu.nazwa.pl:3306/maniu_krzlema";
+    private static final String SQL_USER = "maniu_krzlema";
+    private static final String SQL_PASSWORD = "KrzLema1234";
     private static final String SQL_CLASS = "com.mysql.jdbc.Driver";
 
 
